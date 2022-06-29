@@ -100,11 +100,11 @@ function checkGuess() {
         guessString += val;
     }
     if (guessString.length !=5) {
-        alert("Try again!"); // not enough letters
+        toastr.error("Try again!"); // not enough letters
         return;
     }
     if (!WORDS.includes(guessString)) {
-        alert("Try again"); // not in wordlist
+        toastr.error("Try again"); // not in wordlist
         return;
     }
     for (let i = 0; i < 5; i++) {
@@ -129,7 +129,7 @@ function checkGuess() {
         }, delay);
     }
     if (guessString === rightGuessString) {
-        alert("You won!");
+        toastr.success("You won!");
         guessesRemaining = 0;
         return;
     } else {
@@ -138,7 +138,8 @@ function checkGuess() {
         nextLetter = 0;
 
         if (guessesRemaining === 0) {
-            alert("You're out of guesses! The right word was: " + `${rightGuessString}`);
+            toastr.error("You're out of guesses!");
+            toastr.info(" The right word was: " + `${rightGuessString}`);
         }
     }
 }

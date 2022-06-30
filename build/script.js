@@ -22,7 +22,6 @@ function initBoard() {
         board.appendChild(row);
     }
 }
-initBoard();
 
 /* Listen to keyboard & buttons
 */
@@ -100,7 +99,7 @@ function checkGuess() {
     for (const val of currentGuess) {
         guessString += val;
     }
-    if (guessString.length !=5) {
+    if (guessString.length != 5) {
         toastr.error("Try again!"); // not enough letters
         return;
     }
@@ -170,12 +169,14 @@ const animateCSS = (element, animation, prefix = "animate__") =>
     new Promise((resolve, reject) => {
         const animationName = `${prefix}${animation}`;
         const node = element;
-        node.style.setProperty("--animate-duration, 0.3s");
+        node.style.setProperty("--animate-duration", "0.3s");
         node.classList.add(`${prefix}animated`, animationName);
         function handleAnimationEnd(event) {
             event.stopPropagation();
             node.classList.remove(`${prefix}animated`, animationName);
             resolve("Animation ended");
         }
-        node.addEventListener("animationed", handleAnimationEnd, {once: true});
+        node.addEventListener("animationend", handleAnimationEnd, {once: true});
     });
+
+initBoard();

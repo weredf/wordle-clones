@@ -113,12 +113,12 @@ function checkGuess() {
         let letter = currentGuess[i];
         let letterPosition = rightGuess.indexOf(currentGuess[i]);
         if (letterPosition === -1 ) {
-            letterColor = "grey";
+            letterColor = "var(--empty)";
         } else {
             if (currentGuess[i] === rightGuess[i]) {
-                letterColor = "green";
+                letterColor = "var(--right)";
             } else {
-                letterColor = "yellow";
+                letterColor = "var(--wrong)";
             }
             rightGuess[letterPosition] = "#";
         }
@@ -145,17 +145,17 @@ function checkGuess() {
     }
 }
 
-/* Check if matching key on keyboard is already green or yellow. If key is yellow it can only become green
+/* Check if matching key on keyboard is already green or yellow. If key is yellow it can only become green (not grey)
 * Otherwise use the new color
 */
 function shadeKeyBoard(letter, color) {
     for(const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === letter) {
             let oldColor = elem.style.backgroundColor;
-            if (oldColor === "green") {
+            if (oldColor === "var(--right)") {
                 return;
             }
-            if (oldColor === "yellow" && color !== "green") {
+            if (oldColor === "var(--wrong)" && color !== "var(--right)") {
                 return;
             }
             elem.style.backgroundColor = color;

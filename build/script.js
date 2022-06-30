@@ -71,6 +71,7 @@ function insertLetter (pressedKey) {
     pressedKey = pressedKey.toLowerCase();
     let row = document.getElementsByClassName("letter-row")[6-guessesRemaining];
     let box = row.children[nextLetter];
+    animateCSS(box, "pulse");
     box.textContent = pressedKey;
     box.classList.add("filled-box");
     currentGuess.push(pressedKey);
@@ -124,6 +125,7 @@ function checkGuess() {
         }
         let delay = 250 * i;
         setTimeout(()=> {
+            animateCSS(box, "flipInX");
             box.style.backgroundColor = letterColor;
             shadeKeyBoard(letter, letterColor)
         }, delay);
@@ -162,3 +164,18 @@ function shadeKeyBoard(letter, color) {
         }
     }
 }
+
+// Added animation
+const animateCSS = (element, animation, prefix = "animate__") =>
+    new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`;
+        const node = element;
+        node.style.setProperty("--animate-duration, 0.3s");
+        node.classList.add(`${prefix}animated`, animationName);
+        function handleAnimationEnd(event) {
+            event.stopPropagation();
+            node.classList.remove(`${prefix}animated`, animationName);
+            resolve("Animation ended");
+        }
+        node.addEventListener("animationed", handleAnimationEnd, {once: true});
+    });

@@ -3,5 +3,21 @@ export const WORDS = [
     "color",
     "pinks",
     "white",
-    "wered"
+    "wered",
+    "thorn",
+    "leafy",
+    "canes",
+    "plant",
+    "shrub",
+    "scent",
+    "prick",
+    "petal",
+    "fruit",
+    "layer",
+    "seeds",
+    "stems",
+    "roots",
+    "hedge",
+    "bushy",
+    "water"
 ]

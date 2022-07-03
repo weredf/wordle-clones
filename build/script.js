@@ -101,10 +101,18 @@ function checkGuess() {
     }
     if (guessString.length != 5) {
         toastr.error("Try again!"); // not enough letters
+        // overwrite wrong guess
+        // currentGuess = [];
+        // nextLetter = 0;
+        // user deletes manually
         return;
     }
     if (!WORDS.includes(guessString)) {
         toastr.error("Try again"); // not in wordlist
+        // overwrite wrong guess
+        // currentGuess = [];
+        // nextLetter = 0;
+        // user deletes manually
         return;
     }
     for (let i = 0; i < 5; i++) {

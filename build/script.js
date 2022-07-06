@@ -130,7 +130,7 @@ function checkGuess() {
             }
             rightGuess[letterPosition] = "#";
         }
-        let delay = 250 * i;
+        const delay = 250 * i;
         setTimeout(()=> {
             animateCSS(box, "flipInX");
             box.style.backgroundColor = letterColor;
@@ -157,16 +157,16 @@ function checkGuess() {
 * Otherwise use the new color
 */
 function shadeKeyBoard(letter, color) {
-    for(const elem of document.getElementsByClassName("keyboard-button")) {
-        if (elem.textContent === letter) {
-            let oldColor = elem.style.backgroundColor;
+    for(const element of document.getElementsByClassName("keyboard-button")) {
+        if (element.textContent === letter) {
+            let oldColor = element.style.backgroundColor;
             if (oldColor === "var(--right)") {
                 return;
             }
             if (oldColor === "var(--wrong)" && color !== "var(--right)") {
                 return;
             }
-            elem.style.backgroundColor = color;
+            element.style.backgroundColor = color;
             break;
         }
     }

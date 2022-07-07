@@ -11,16 +11,16 @@ console.log(rightGuessString);
 */
 function initBoard() {
     let board = document.getElementById("game-board");
-    for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
+    [...Array(NUMBER_OF_GUESSES)].forEach(()=> {
         let row = document.createElement("div");
         row.className = "letter-row";
-        for (let j = 0; j < 5; j++) {
+        [...Array(rightGuessString.length)].forEach(()=> {
             let box = document.createElement("div");
             box.className = "letter-box";
             row.appendChild(box);
-        }
+        });
         board.appendChild(row);
-    }
+    });
 }
 
 /* Listen to keyboard & buttons
@@ -101,17 +101,11 @@ function checkGuess() {
     }
     if (guessString.length != 5) {
         toastr.error("Try again!"); // not enough letters
-        // overwrite wrong guess
-        // currentGuess = [];
-        // nextLetter = 0;
         // user deletes manually
         return;
     }
     if (!WORDS.includes(guessString)) {
         toastr.error("Try again"); // not in wordlist
-        // overwrite wrong guess
-        // currentGuess = [];
-        // nextLetter = 0;
         // user deletes manually
         return;
     }

@@ -19,5 +19,16 @@ export const WORDS = [
     "roots",
     "hedge",
     "bushy",
-    "water"
+    "water",
+    "grows",
+    "loves",
+    "lover",
+    "smell",
+    "hurts",
+    "sleep",
+    "dates",
+    "gifts",
+    "trims",
+    "hedge",
+    "decor"
 ]
